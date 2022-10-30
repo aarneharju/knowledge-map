@@ -110,6 +110,9 @@ main {
 
 .knowledge-map-logo-image {
   width: 60px;
+
+  /* gif color a bit off, fill with correct color */
+  filter: brightness(0) saturate(100%) invert(82%) sepia(48%) saturate(2617%) hue-rotate(343deg) brightness(112%) contrast(102%);
 }
 
 .knowledge-map-logo-title {
