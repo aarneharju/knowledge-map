@@ -150,7 +150,7 @@ h2 {
 }
 
 #skill-input {
-  line-height: 36px;
+  line-height: 40px;
   background-color: transparent;
   border: 1px solid var(--palette-color-1);
   border-radius: 5px;
@@ -249,8 +249,8 @@ h2 {
 }
 
 .skill-indicator {
-  border: 2px solid var(--palette-color-3);
-  height: 36px;
+  border: 1px solid var(--palette-color-3);
+  height: 40px;
   width: 100px;
   border-radius: 5px;
   background-color: transparent;
