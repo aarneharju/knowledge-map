@@ -1,6 +1,6 @@
 const Logout = (props) => {
     return (
-        <button className='button-logout'>Logout</button>
+        <button className={props.className}>Logout</button>
     )
 }
 
