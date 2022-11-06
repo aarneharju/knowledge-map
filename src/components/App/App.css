@@ -11,6 +11,9 @@
   --font-color-light: whitesmoke;
   --font-color-dark: black;
   --button-font-family: 'Viga', sans-serif;
+  --button-padding: 10px 30px;
+  --button-padding-top-bottom: 10px;
+  --button-padding-left-right: 30px;
 }
 
 * {
@@ -106,7 +109,7 @@ h2 {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 10vw;
+  gap: 50px;
 }
 
 #profile-and-navigation {
@@ -150,12 +153,23 @@ h2 {
 }
 
 #skill-input {
+  padding: 0 10px;
   line-height: 40px;
   background-color: transparent;
   border: 1px solid var(--palette-color-1);
   border-radius: 5px;
   width: 200px;
+  color: var(--font-color-light);
+  font-size: 1.5rem;
 }
+
+#skill-input:focus {
+  /* border-color: var(--palette-color-1); */
+  /* background-color: pink; */
+  outline-color: var(--palette-color-1);
+  outline-style: double;
+}
+
 
 #footer {
   background-color: green;
@@ -194,6 +208,7 @@ h2 {
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .settings-icon {
@@ -212,7 +227,7 @@ h2 {
 
 .button-primary {
   color: white;
-  padding: 10px 30px;
+  padding: var(--button-padding);
   border-radius: 5px;
   border: 1px solid var(--palette-color-1);
   font-family: var(--button-font-family);
@@ -227,7 +242,7 @@ h2 {
 .button-secondary {
   background-color: var(--palette-color-2);
   color: white;
-  padding: 10px 30px;
+  padding: var(--button-padding);
   border: none;
   border-radius: 5px;
   font-family: var(--button-font-family);
@@ -237,10 +252,11 @@ h2 {
 
 .form-tech-skill-input {
   margin-top: 0.6rem;
+
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 4px;
+  gap: 6px;
 }
 
 .form-label {
@@ -259,6 +275,54 @@ h2 {
   background-repeat: repeat-x;
   background-position: center;
   background-position-x: 5px;
+}
+
+.sort-text {
+  margin: 0.5rem 0;
+}
+
+.technology-skill-list {
+  list-style-type: none;
+}
+
+.technology-skill-list li {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.technology-skill-name {
+  /* display: inline-block; */
+  padding: var(--button-padding);
+  background-color: var(--palette-color-3);
+  border-radius: 5px 0 0 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.technology-skill-level {
+  /* display: inline-block; */
+  /* padding: var(--button-padding); */
+  border: 1px solid var(--palette-color-3);
+  border-radius: 0 5px 5px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.technology-skill-level input {
+  display: none;
+}
+
+.technology-skill-level label {
+  /* width: 60px;
+  height: 60px; */
+  /* background: url('http: //localhost:3000/images/vectors/bulb-outline-grey.svg'); */
+  background-size: 100%;
 }
 
 .App {}

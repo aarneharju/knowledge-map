@@ -3,6 +3,12 @@ import Button from '../common/Button';
 import KnowledgeMapLogo from '../KnowledgeMapLogo/KnowledgeMapLogo';
 import Settings from '../Settings/Settings';
 import Logout from '../Logout/Logout';
+import bulbOutlineGrey from '../../assets/images/vectors/bulb-outline.svg';
+
+import { BulbOutline } from 'react-ionicons'
+import { Bulb } from 'react-ionicons'
+
+import { ReactComponent as BulbSVGComponent } from '../../assets/images/vectors/bulb.svg';
 
 function App() {
 
@@ -40,8 +46,8 @@ function App() {
                   <input type='text'
                     name='skill-input'
                     id='skill-input'
-                    value=''
-                    onChange={onChange}
+                  // value=''
+                  // onChange={onChange}
                   />
                 </div>
                 <div className='input-skill-level'>
@@ -49,13 +55,82 @@ function App() {
                   <div className='skill-indicator'></div>
                 </div>
                 <Button text='Add' className='button-secondary' />
+                <BulbSVGComponent fill={'#ffca1b'}
+                  title={'skill level 1'}
+                  height="25px"
+                  width="25px"
+                  onClick={() => console.log('im bulb')} />
               </form>
             </section>
             <section id='section-technologies-skills'>
               <h2>Technologies / skills</h2>
               <p className='sort-text'>Sort by: <span className='sort-by-functionality'>name</span></p>
-              <ul>
-                <li><span className='skill-item'></span><span className='skill-level'></span></li>
+              <ul className='technology-skill-list'>
+                <li>
+                  <span className='technology-skill-name'>MySQL</span>
+                  <span className='technology-skill-level'>
+                    <input type="radio" name='skill-level-icon' id="skill-level-5" />
+                    <label htmlFor="skill-level-5"></label>
+                    <Bulb
+                      color={'#ffca1b'}
+                      title={'skill level 1'}
+                      height="25px"
+                      width="25px"
+                      onClick={() => console.log('im bulb')}
+                    />
+                    <BulbOutline
+                      color={'#4d5d6d'}
+                      title={'skill level 0'}
+                      height="25px"
+                      width="25px"
+                      style={{ margin: 0, padding: 0 }}
+                      onClick={() => console.log('I\'m outlinebul')}
+                    />
+                    <BulbOutline
+                      color={'#4d5d6d'}
+                      title={'skill level 0'}
+                      height="25px"
+                      width="25px"
+                      style={{ margin: 0, padding: 0, verticalAlign: 'middle' }}
+                      onClick={() => console.log('I\'m outlinebul')}
+                    />
+                    <BulbOutline
+                      color={'#4d5d6d'}
+                      title={'skill level 0'}
+                      height="25px"
+                      width="25px"
+                      style={{ margin: 0, padding: 0 }}
+                      onClick={() => console.log('I\'m outlinebul')}
+                    />
+                    {/* <input type="radio" name='skill-level-icon' id="skill-level-4" />
+                    <label htmlFor="skill-level-4"></label>
+
+                    <input type="radio" name='skill-level-icon' id="skill-level-3" />
+                    <label htmlFor="skill-level-3"></label>
+
+                    <input type="radio" name='skill-level-icon' id="skill-level-2" />
+                    <label htmlFor="skill-level-2"></label>
+
+                    <input type="radio" name='skill-level-icon' id="skill-level-1" />
+                    <label htmlFor="skill-level-1"></label> */}
+                  </span>
+                  {/* <img src={bulbOutlineGrey} /> */}
+                  {/* <BulbOutline
+                    color={'#4d5d6d'}
+                    title={'skill level 0'}
+                    height="25px"
+                    width="50px"
+                    onClick={() => console.log('I\'m outlinebul')}
+                  />
+                  <Bulb
+                    color={'#ffca1b'}
+                    title={'skill level 1'}
+                    height="50px"
+                    width="50px"
+                    onClick={() => console.log('im bulb')}
+                  /> */}
+
+                </li>
               </ul>
             </section>
           </div>
