@@ -4,6 +4,9 @@ import KnowledgeMapLogo from '../KnowledgeMapLogo/KnowledgeMapLogo';
 import Settings from '../Settings/Settings';
 import Logout from '../Logout/Logout';
 import SkillLevel from '../common/SkillLevel';
+import { ReactComponent as SkillIconFilled } from '../../assets/images/vectors/bulb.svg';
+import { ReactComponent as SkillIconOutline } from '../../assets/images/vectors/bulb-outline.svg';
+
 
 function App() {
 
@@ -63,33 +66,33 @@ function App() {
                   <span className='technology-skill-level'>
                     <input type="radio" name='skill-level-icon' id="skill-level-5" />
                     <label htmlFor="skill-level-5"></label>
-                    <Bulb
-                      color={'#ffca1b'}
+                    <SkillIconFilled
+                      fill={'#ffca1b'}
                       title={'skill level 1'}
-                      height="25px"
-                      width="25px"
+                      height="24px"
+                      width="24px"
                       onClick={() => console.log('im bulb')}
                     />
-                    <BulbOutline
+                    <SkillIconOutline
                       color={'#4d5d6d'}
                       title={'skill level 0'}
-                      height="25px"
-                      width="25px"
+                      height="24px"
+                      width="24px"
                       style={{ margin: 0, padding: 0 }}
                       onClick={() => console.log('I\'m outlinebul')}
                     />
-                    <BulbOutline
+                    <SkillIconOutline
                       color={'#4d5d6d'}
                       title={'skill level 0'}
-                      height="25px"
-                      width="25px"
+                      height="24px"
+                      width="24px"
                       onClick={() => console.log('I\'m outlinebul')}
                     />
-                    <BulbOutline
+                    <SkillIconOutline
                       color={'#4d5d6d'}
                       title={'skill level 0'}
-                      height="25px"
-                      width="25px"
+                      height="24px"
+                      width="24px"
                       style={{ margin: 0, padding: 0 }}
                       onClick={() => console.log('I\'m outlinebul')}
                     />
