@@ -3,12 +3,6 @@ import Button from '../common/Button';
 import KnowledgeMapLogo from '../KnowledgeMapLogo/KnowledgeMapLogo';
 import Settings from '../Settings/Settings';
 import Logout from '../Logout/Logout';
-import bulbOutlineGrey from '../../assets/images/vectors/bulb-outline.svg';
-
-import { BulbOutline } from 'react-ionicons'
-import { Bulb } from 'react-ionicons'
-
-import { ReactComponent as BulbSVGComponent } from '../../assets/images/vectors/bulb.svg';
 import SkillLevel from '../common/SkillLevel';
 
 function App() {
