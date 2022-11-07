@@ -9,6 +9,7 @@ import { BulbOutline } from 'react-ionicons'
 import { Bulb } from 'react-ionicons'
 
 import { ReactComponent as BulbSVGComponent } from '../../assets/images/vectors/bulb.svg';
+import SkillLevel from '../common/SkillLevel';
 
 function App() {
 
@@ -52,14 +53,11 @@ function App() {
                 </div>
                 <div className='input-skill-level'>
                   <div className='form-label'>Skill level:</div>
-                  <div className='skill-indicator'></div>
+                  <div className='skill-indicator'>
+                    <SkillLevel />
+                  </div>
                 </div>
                 <Button text='Add' className='button-secondary' />
-                <BulbSVGComponent fill={'#ffca1b'}
-                  title={'skill level 1'}
-                  height="25px"
-                  width="25px"
-                  onClick={() => console.log('im bulb')} />
               </form>
             </section>
             <section id='section-technologies-skills'>
@@ -91,7 +89,6 @@ function App() {
                       title={'skill level 0'}
                       height="25px"
                       width="25px"
-                      style={{ margin: 0, padding: 0, verticalAlign: 'middle' }}
                       onClick={() => console.log('I\'m outlinebul')}
                     />
                     <BulbOutline
@@ -102,35 +99,8 @@ function App() {
                       style={{ margin: 0, padding: 0 }}
                       onClick={() => console.log('I\'m outlinebul')}
                     />
-                    {/* <input type="radio" name='skill-level-icon' id="skill-level-4" />
-                    <label htmlFor="skill-level-4"></label>
-
-                    <input type="radio" name='skill-level-icon' id="skill-level-3" />
-                    <label htmlFor="skill-level-3"></label>
-
-                    <input type="radio" name='skill-level-icon' id="skill-level-2" />
-                    <label htmlFor="skill-level-2"></label>
-
-                    <input type="radio" name='skill-level-icon' id="skill-level-1" />
-                    <label htmlFor="skill-level-1"></label> */}
                   </span>
-                  {/* <img src={bulbOutlineGrey} /> */}
-                  {/* <BulbOutline
-                    color={'#4d5d6d'}
-                    title={'skill level 0'}
-                    height="25px"
-                    width="50px"
-                    onClick={() => console.log('I\'m outlinebul')}
-                  />
-                  <Bulb
-                    color={'#ffca1b'}
-                    title={'skill level 1'}
-                    height="50px"
-                    width="50px"
-                    onClick={() => console.log('im bulb')}
-                  /> */}
-
-                </li>
+                  ß                </li>
               </ul>
             </section>
           </div>
