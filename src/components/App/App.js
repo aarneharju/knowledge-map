@@ -100,7 +100,7 @@ function App() {
                       onClick={() => console.log('I\'m outlinebul')}
                     />
                   </span>
-                  ß                </li>
+                </li>
               </ul>
             </section>
           </div>
