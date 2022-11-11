@@ -6,12 +6,32 @@ import Logout from '../Logout/Logout';
 import SkillLevel from '../common/SkillLevel';
 import { ReactComponent as SkillIconFilled } from '../../assets/images/vectors/bulb.svg';
 import { ReactComponent as SkillIconOutline } from '../../assets/images/vectors/bulb-outline.svg';
+import { useState } from 'react';
 
 
 function App() {
+  // States
+  const [techSkillList, setTechSkillList] = useState([]);
+  const [newTechOrSkill, setNewTechOrSkill] = useState('');
+  const [newSkillLevel, setNewSkillLevel] = useState(1);
 
-  const onChange = (event) => {
-    return
+  // Functions
+  const skillLevelSetter = (skillLevel) => setNewSkillLevel(skillLevel);
+
+  // Event handlers
+  const onChangeNewTechOrSkill = event => setNewTechOrSkill(event.target.value);
+
+  const addNewTechSkill = event => {
+    // event.preventDefault();
+    console.log(event.target);
+
+    const newTechOrSkillObject = {
+      techOrSkillName: newTechOrSkill,
+      skillLevel: newSkillLevel
+    };
+    console.log({ newTechOrSkillObject });
+    setTechSkillList(techSkillList.concat([newTechOrSkillObject]));
+    return;
   }
 
   return (
@@ -31,7 +51,7 @@ function App() {
               <h2 id='name-under-profile-image'>Aarne Harju</h2>
             </div>
             <nav id='main-navigation'>
-              <Button text='Search' className='button-secondary' />
+              <Button text='Search' className='button-secondary' onClick={addNewTechSkill} />
               <Button text='Manage' className='button-secondary' />
             </nav>
           </div>
@@ -44,17 +64,17 @@ function App() {
                   <input type='text'
                     name='skill-input'
                     id='skill-input'
-                  // value=''
-                  // onChange={onChange}
+                    value={newTechOrSkill}
+                    onChange={onChangeNewTechOrSkill}
                   />
                 </div>
                 <div className='input-skill-level'>
                   <div className='form-label'>Skill level:</div>
                   <div className='skill-indicator'>
-                    <SkillLevel />
+                    <SkillLevel skillLevelSetter={skillLevelSetter} />
                   </div>
                 </div>
-                <Button text='Add' className='button-secondary' />
+                <Button text='Add' className='button-secondary' onClick={addNewTechSkill} />
               </form>
             </section>
             <section id='section-technologies-skills'>

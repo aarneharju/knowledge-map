@@ -30,6 +30,12 @@ const SkillLevel = props => {
         />
     }
 
+    // Functions
+    const handleSkillLevelSetting = level => {
+        setSkillLevel(level);
+        props.skillLevelSetter(level);
+    }
+
     return (
         <>
             {
@@ -43,7 +49,7 @@ const SkillLevel = props => {
                                 name='radio-skill-level'
                                 className='radio-skill-level'
                                 value={skillLevelValue}
-                                onClick={() => setSkillLevel(skillLevelValue)}
+                                onClick={() => handleSkillLevelSetting(skillLevelValue)}
                             />
                             {skillLevel >= skillLevelValue ? icons.iconFilled : icons.iconOutline}
                         </label>
