@@ -55,7 +55,7 @@ h2 {
 #page {
   margin: 20px auto;
   background-color: var(--palette-color-5);
-  background-image: url('http://localhost:3000/images/photos/johannes-plenio-voQ97kezCx0-unsplash-flipped-faded-v1.jpg');
+  /* background-image: url('http://localhost:3000/images/photos/johannes-plenio-voQ97kezCx0-unsplash-flipped-faded-v1.jpg'); */
   background-position: bottom;
   background-size: 94vw;
   background-repeat: no-repeat;
@@ -286,6 +286,10 @@ h2 {
 
 .technology-skill-list {
   list-style-type: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--button-padding-top-bottom);
 }
 
 .technology-skill-list li {

@@ -3,35 +3,61 @@ import Button from '../common/Button';
 import KnowledgeMapLogo from '../KnowledgeMapLogo/KnowledgeMapLogo';
 import Settings from '../Settings/Settings';
 import Logout from '../Logout/Logout';
-import SkillLevel from '../common/SkillLevel';
-import { ReactComponent as SkillIconFilled } from '../../assets/images/vectors/bulb.svg';
-import { ReactComponent as SkillIconOutline } from '../../assets/images/vectors/bulb-outline.svg';
+import TechSkillListMain from '../TechSkillListMain/TechSkillListMain';
+import SkillLevelEntry from '../SkillLevelEntry/SkillLevelEntry';
 import { useState } from 'react';
 
 
 function App() {
   // States
-  const [techSkillList, setTechSkillList] = useState([]);
+  const [techOrSkillList, setTechOrSkillList] = useState([]);
   const [newTechOrSkill, setNewTechOrSkill] = useState('');
   const [newSkillLevel, setNewSkillLevel] = useState(1);
 
   // Functions
-  const skillLevelSetter = (skillLevel) => setNewSkillLevel(skillLevel);
+  const skillLevelSetterOfNewItems = skillLevel => setNewSkillLevel(skillLevel);
+
+  const skillLevelSetterOfExistingItems = (skillLevel, techOrSkillID) => {
+    console.log({ skillLevel });
+    console.log({ techOrSkillID });
+    const updatedTechOrSkill = techOrSkillList.filter(techOrSkill => techOrSkill.id === techOrSkillID).skillLevel;
+    setTechOrSkillList(techOrSkillList.map(techOrSkill => techOrSkill.id === techOrSkillID ? updatedTechOrSkill : techOrSkill));
+    return 'Skill level updated.'
+  };
+
+  const isntInTechSkillList = techOrSkillToMatch => {
+    if (techOrSkillList.length === 0) return true;
+    return techOrSkillList.find(techOrSkillInList => {
+      console.log({ techOrSkillInList, techOrSkillToMatch });
+      return techOrSkillInList.techOrSkillName === techOrSkillToMatch ? false : true
+    });
+  }
+
+  const resetAddTechOrSkillInputFields = () => {
+    setNewTechOrSkill('');
+    setNewSkillLevel(1);
+  }
 
   // Event handlers
   const onChangeNewTechOrSkill = event => setNewTechOrSkill(event.target.value);
 
   const addNewTechSkill = event => {
     // event.preventDefault();
-    console.log(event.target);
 
-    const newTechOrSkillObject = {
-      techOrSkillName: newTechOrSkill,
-      skillLevel: newSkillLevel
-    };
-    console.log({ newTechOrSkillObject });
-    setTechSkillList(techSkillList.concat([newTechOrSkillObject]));
-    return;
+    if (isntInTechSkillList(newTechOrSkill)) {
+      const newTechOrSkillObject = {
+        id: newTechOrSkill,
+        techOrSkillName: newTechOrSkill,
+        skillLevel: newSkillLevel
+      };
+      setTechOrSkillList(techOrSkillList.concat([newTechOrSkillObject]));
+      resetAddTechOrSkillInputFields();
+      return 'New tech / skill added.';
+    } else {
+      const modalMessage = `${newTechOrSkill} is already in the list.`
+      // TODO: implement function openModal(modalMessage);
+      window.confirm(modalMessage);
+    }
   }
 
   return (
@@ -58,7 +84,7 @@ function App() {
           <div id='content-main'>
             <section id='section-add-skills'>
               <h2>Add technology / skill</h2>
-              <form className='form-tech-skill-input'>
+              <form className='form-tech-skill-input' action='POST'>
                 <div className='input-tech-skill'>
                   <label htmlFor='skill-input' className='form-label'>Technology / skill:</label>
                   <input type='text'
@@ -71,55 +97,13 @@ function App() {
                 <div className='input-skill-level'>
                   <div className='form-label'>Skill level:</div>
                   <div className='skill-indicator'>
-                    <SkillLevel skillLevelSetter={skillLevelSetter} />
+                    <SkillLevelEntry skillLevelSetterOfNewOrExistingItems={skillLevelSetterOfNewItems} />
                   </div>
                 </div>
                 <Button text='Add' className='button-secondary' onClick={addNewTechSkill} />
               </form>
             </section>
-            <section id='section-technologies-skills'>
-              <h2>Technologies / skills</h2>
-              <p className='sort-text'>Sort by: <span className='sort-by-functionality'>name</span></p>
-              <ul className='technology-skill-list'>
-                <li>
-                  <span className='technology-skill-name'>MySQL</span>
-                  <span className='technology-skill-level'>
-                    <input type="radio" name='skill-level-icon' id="skill-level-5" />
-                    <label htmlFor="skill-level-5"></label>
-                    <SkillIconFilled
-                      fill={'#ffca1b'}
-                      title={'skill level 1'}
-                      height="24px"
-                      width="24px"
-                      onClick={() => console.log('im bulb')}
-                    />
-                    <SkillIconOutline
-                      color={'#4d5d6d'}
-                      title={'skill level 0'}
-                      height="24px"
-                      width="24px"
-                      style={{ margin: 0, padding: 0 }}
-                      onClick={() => console.log('I\'m outlinebul')}
-                    />
-                    <SkillIconOutline
-                      color={'#4d5d6d'}
-                      title={'skill level 0'}
-                      height="24px"
-                      width="24px"
-                      onClick={() => console.log('I\'m outlinebul')}
-                    />
-                    <SkillIconOutline
-                      color={'#4d5d6d'}
-                      title={'skill level 0'}
-                      height="24px"
-                      width="24px"
-                      style={{ margin: 0, padding: 0 }}
-                      onClick={() => console.log('I\'m outlinebul')}
-                    />
-                  </span>
-                </li>
-              </ul>
-            </section>
+            <TechSkillListMain techOrSkillList={techOrSkillList} skillLevelSetterOfExistingItems={skillLevelSetterOfExistingItems} />
           </div>
         </main>
         {/* <footer id='footer'>footer</footer> */}
