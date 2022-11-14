@@ -18,17 +18,15 @@ function App() {
   const skillLevelSetterOfNewItems = skillLevel => setNewSkillLevel(skillLevel);
 
   const skillLevelSetterOfExistingItems = (skillLevel, techOrSkillID) => {
-    console.log({ skillLevel });
-    console.log({ techOrSkillID });
-    const updatedTechOrSkill = techOrSkillList.filter(techOrSkill => techOrSkill.id === techOrSkillID).skillLevel;
-    setTechOrSkillList(techOrSkillList.map(techOrSkill => techOrSkill.id === techOrSkillID ? updatedTechOrSkill : techOrSkill));
+    const updatedTechOrSkill = techOrSkillList.filter(techOrSkill => techOrSkill.id === techOrSkillID);
+    updatedTechOrSkill[0].skillLevel = skillLevel;
+    setTechOrSkillList(techOrSkillList.map(techOrSkill => techOrSkill.id === techOrSkillID ? updatedTechOrSkill[0] : techOrSkill));
     return 'Skill level updated.'
   };
 
   const isntInTechSkillList = techOrSkillToMatch => {
     if (techOrSkillList.length === 0) return true;
     return techOrSkillList.find(techOrSkillInList => {
-      console.log({ techOrSkillInList, techOrSkillToMatch });
       return techOrSkillInList.techOrSkillName === techOrSkillToMatch ? false : true
     });
   }
@@ -60,6 +58,7 @@ function App() {
     }
   }
 
+  // Render
   return (
     <div className='App' id='page'>
       <div id='container'>
@@ -97,7 +96,7 @@ function App() {
                 <div className='input-skill-level'>
                   <div className='form-label'>Skill level:</div>
                   <div className='skill-indicator'>
-                    <SkillLevelEntry skillLevelSetterOfNewOrExistingItems={skillLevelSetterOfNewItems} />
+                    <SkillLevelEntry skillLevelSetterOfNewOrExistingItems={skillLevelSetterOfNewItems} newSkillLevel={newSkillLevel} isNewSkillLevelItem={true} />
                   </div>
                 </div>
                 <Button text='Add' className='button-secondary' onClick={addNewTechSkill} />

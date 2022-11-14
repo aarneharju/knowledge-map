@@ -6,13 +6,12 @@ import { ReactComponent as SkillIconOutline } from '../../assets/images/vectors/
 
 
 const SkillLevelEntry = props => {
-    const [skillLevel, setSkillLevel] = useState(1);
     const [hover, setHover] = useState(1); // 1 = at least first icon is always a filled icon
     const icons =
     {
         iconFilled: <SkillIconFilled
             fill='#ffca1b'
-            title={'skill level description here'}
+            title='skill level description here'
             height='24px'
             width='24px'
             className='skill-icon skill-icon-filled'
@@ -20,8 +19,8 @@ const SkillLevelEntry = props => {
         // onMouseLeave={() => setHover(1)}
         />,
         iconOutline: <SkillIconOutline
-            color={'#4d5d6d'}
-            title={'skill level description here'}
+            color='#4d5d6d'
+            title='skill level description here'
             height='24px'
             width='24px'
             className='skill-icon skill-icon-outline'
@@ -32,19 +31,15 @@ const SkillLevelEntry = props => {
 
     // Functions
     const handleSkillLevelSetting = level => {
-        console.log('handleSkillLevelSetting - techOrSkillItem: ', props.techOrSkillItem);
-        if (!props.techOrSkillItem) {
-            setSkillLevel(level);
+        if (props.isNewSkillLevelItem) {
             return props.skillLevelSetterOfNewOrExistingItems(level);
         }
-        console.log('handleSkillLevelSetting - id: ', props.techOrSkillItem.id);
         return props.skillLevelSetterOfNewOrExistingItems(level, props.techOrSkillItem.id);
     }
 
-    console.log('techOrSkillItem: ', props.techOrSkillItem);
 
     // Conditional rendering
-    if (!props.techOrSkillItem) {
+    if (props.isNewSkillLevelItem) {
         return (
             <>
                 {
@@ -60,7 +55,7 @@ const SkillLevelEntry = props => {
                                     value={skillLevelValue}
                                     onClick={() => handleSkillLevelSetting(skillLevelValue)}
                                 />
-                                {skillLevel >= skillLevelValue ? icons.iconFilled : icons.iconOutline}
+                                {props.newSkillLevel >= skillLevelValue ? icons.iconFilled : icons.iconOutline}
                             </label>
                         );
                     })
@@ -68,7 +63,7 @@ const SkillLevelEntry = props => {
             </>
         )
     }
-    if (props.techOrSkillItem) {
+    if (!props.isNewSkillLevelItem) {
         return (
             <>
                 {
