@@ -12,7 +12,7 @@ const SkillLevelEntry = props => {
     {
         iconFilled: <SkillIconFilled
             fill='#ffca1b'
-            title={'skill level 1 description here'}
+            title={'skill level description here'}
             height='24px'
             width='24px'
             className='skill-icon skill-icon-filled'
@@ -21,7 +21,7 @@ const SkillLevelEntry = props => {
         />,
         iconOutline: <SkillIconOutline
             color={'#4d5d6d'}
-            title={'skill level 3 description here'}
+            title={'skill level description here'}
             height='24px'
             width='24px'
             className='skill-icon skill-icon-outline'
