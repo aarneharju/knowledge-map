@@ -40,7 +40,7 @@ function App() {
   const onChangeNewTechOrSkill = event => setNewTechOrSkill(event.target.value);
 
   const addNewTechSkill = event => {
-    // event.preventDefault();
+    event.preventDefault();
 
     if (isntInTechSkillList(newTechOrSkill)) {
       const newTechOrSkillObject = {
@@ -76,14 +76,14 @@ function App() {
               <h2 id='name-under-profile-image'>Aarne Harju</h2>
             </div>
             <nav id='main-navigation'>
-              <Button text='Search' className='button-secondary' onClick={addNewTechSkill} />
-              <Button text='Manage' className='button-secondary' />
+              <Button type='button' text='Search' className='button-secondary' onClick={addNewTechSkill} />
+              <Button type='button' text='Manage' className='button-secondary' />
             </nav>
           </div>
           <div id='content-main'>
             <section id='section-add-skills'>
               <h2>Add technology / skill</h2>
-              <form className='form-tech-skill-input' action='POST'>
+              <form className='form-tech-skill-input' action='POST' onSubmit={addNewTechSkill}>
                 <div className='input-tech-skill'>
                   <label htmlFor='skill-input' className='form-label'>Technology / skill:</label>
                   <input type='text'
@@ -99,7 +99,7 @@ function App() {
                     <SkillLevelEntry skillLevelSetterOfNewOrExistingItems={skillLevelSetterOfNewItems} newSkillLevel={newSkillLevel} isNewSkillLevelItem={true} />
                   </div>
                 </div>
-                <Button text='Add' className='button-secondary' onClick={addNewTechSkill} />
+                <Button type='submit' text='Add' className='button-secondary' /* onClick={addNewTechSkill} */ />
               </form>
             </section>
             <TechSkillListMain techOrSkillList={techOrSkillList} skillLevelSetterOfExistingItems={skillLevelSetterOfExistingItems} />
